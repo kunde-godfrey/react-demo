@@ -3,17 +3,18 @@ import { useState } from "react";
 interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void;
 }
 
-function ListGroup(props: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <>
-      <h1>{props.heading}</h1>
+      <h1>{heading}</h1>
       <ul className="list-group">
-        {props.items.length == 0 && <p>No item found</p>}
-        {props.items.map((item, index) => (
+        {items.length == 0 && <p>No item found</p>}
+        {items.map((item, index) => (
           <li
             key={item}
             className={
@@ -21,7 +22,10 @@ function ListGroup(props: Props) {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={() => setSelectedIndex(index)}
+            onClick={() => {
+              setSelectedIndex(index);
+              onSelectItem(item);
+            }}
           >
             {item}
           </li>
