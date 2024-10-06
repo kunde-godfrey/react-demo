@@ -1,14 +1,8 @@
-import ListGroup from "./components/ListGroup";
 import "./App.css";
+
+import Like from "./components/Like";
 const App = () => {
-  const items = ["Bamenda", "Buea", "Yauonde", "Douala"];
-  return (
-    <ListGroup
-      items={items}
-      heading="Cities"
-      onSelectItem={(item) => console.log(item)}
-    />
-  );
+  return <Like onClick={() => console.log("clicked")} />;
 };
 
 export default App;
